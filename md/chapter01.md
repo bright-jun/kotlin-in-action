@@ -145,6 +145,81 @@ Kotlin coroutines
 
 ### 1.3.1 Powering backends: server-side development with Kotlin
 
+**Server-side programming**
+
+- based on JVM
+    - Web applications that return HTML pages to a browser
+    - Backends for mobile or single-page applications that expose a JSON API over HTTP
+    - Microservices that communicate with other microservices over an RPC protocol or message bus
+
+There’s almost always an existing system that is being extended, improved, or replaced, and new code
+has to integrate with existing parts of the system, which may have been written many years ago.
+
+**Profits**
+
+- Interoperability(상호 운용성) with existing Java code
+    - Java -> Kotlin
+        - Kotlin will fit right in.
+    - more compact, more reliable, and easier to maintain
+- Reliability(안정성)
+    - Type system, with its precise tracking of `null` values
+        - `NullPointerException` fails to compile in Kotlin
+        - ensure that you fix the error before the application gets to the production environment
+- Frameworks(프레임워크)
+    - Spring
+        - first-class support
+        - additional extensions
+
+Listing 1.2. Writing Spring Boot applications in Kotlin
+
+```kotlin
+@SpringBootApplication
+class DemoApplication
+
+fun main(args: Array<String>) {
+    runApplication<DemoApplication>(*args)
+}
+
+@RestController
+class GreetingResource {
+    @GetMapping
+    fun index(): List<Greeting> = listOf(
+        Message("1", "Hello!"),
+        Message("2", "Bonjour!"),
+        Message("3", "Guten Tag!"),
+    )
+}
+
+data class Greeting(val id: String?, val text: String)
+```
+
+- Ever-growing ecosystem
+    - DSL(Domain-Specific Language)
+        - Ktor
+
+      Listing 1.3. A Ktor app uses a DSL to route HTTP requests
+
+      ```kotlin
+      fun main() {
+          embeddedServer(Netty, port = 8000) {
+              routing {
+                  get("/world") {
+                      call.respondText("Hello, world!")
+                  }
+                  route("/greet") {
+                      get { /* . . . */ }
+                      post("/{entityId}") { /* . . . */ }
+                  }
+              }
+          }.start(wait = true)
+      }    
+      ```
+
+    - ORM(Object-Relational Mapping)
+        - objects <-> database representation
+    - http4k
+        - provide simple and uniform abstractions for requests and responses
+
 ### 1.3.2 Mobile Development: Android is Kotlin-first
 
 ### 1.3.3 Multiplatform: Sharing business logic and minimizing duplicate work on iOS, JVM, JS and beyond
