@@ -226,13 +226,13 @@ data class Greeting(val id: String?, val text: String)
 
 ## 1.4 The philosophy of Kotlin
 
-### 1.4.1 Kotlin is a pragmatic language designed to solve real-world problems
+### 1.4.1 Kotlin is a pragmatic(실용적인) language designed to solve real-world problems
 
-### 1.4.2 Kotlin is concise, making the intent of your code clear while reducing boilerplate
+### 1.4.2 Kotlin is concise(간결한), making the intent of your code clear while reducing boilerplate
 
-### 1.4.3 Kotlin is safe, protecting you from whole categories of errors
+### 1.4.3 Kotlin is safe(안전한), protecting you from whole categories of errors
 
-### 1.4.4 Kotlin is interoperable, allowing reuse of existing Java code to the highest degree
+### 1.4.4 Kotlin is interoperable(상호 운용성), allowing reuse of existing Java code to the highest degree
 
 ## 1.5 Using the Kotlin tools
 
